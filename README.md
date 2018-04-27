@@ -93,13 +93,14 @@ The four categories are:
 
 If you will see that this categories is the same for both the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza](). The prices for the each Toll plaza is different though.
 
-
- Categort                 |  Huguenote Tunnel                  | Grasmere Toll Plaza
+ Category                 |  Huguenote Tunnel                  | Grasmere Toll Plaza
 ------------------|--------------------|--------------------
-Motorcycle, passenger cars, minibus taxi & car with caravan|
-Small trucks & busses with 4 wheels|
-Trucks and busess with 6-8 wheels|
-Trucks and busses with more than 8 wheels|
+Motorcycle, passenger cars, minibus taxi & car with caravan|18.00| 9.00
+Small trucks & busses with 4 wheels|47.00| 24.00
+Trucks and busess with 6-8 wheels|73.00| 28.00
+Trucks and busses with more than 8 wheels|118.00| 36.00
+
+
 
 
 
