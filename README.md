@@ -116,21 +116,53 @@ interface PlazaKiosk {
 
 The `PlazaKiosk` define what behaviour and object should implement to be considered an PlazaKiosk.
 
-If a class implement an interface it needs to implement all the methods and attributes define in the interface. 
+If a class implement an interface it needs to implement all the methods and attributes defined in the interface. 
 
 I will create two classes that implements the `PlazaKiosk` interface:
 
-```
+```typescript
 class HuguenotePlazaKiosk implements PlazaKiosk {
   
 }
 ```
 
-```
+```typescript
 class GrasmerePlazaKiosk implements PlazaKiosk {
   
 }
 ```
+
+Now we can create instance of both classes for both kiosk types:
+
+
+```typescript
+
+let huguenotePlaza = new HuguenotePlazaKiosk();
+let grasmerePlaza = new GrasmerePlazaKiosk();
+
+huguenotePlaza.charge('category1');
+huguenotePlaza.charge('category2');
+
+grasmerePlaza.charge('category1');
+grasmerePlaza.charge('category2');
+
+assert.equal(huguenotePlaza.dailyTotal, 65);
+assert.equal(grasmerePlaza.dailyTotal, 33);
+
+assert.equal(huguenotePlaza.vehiclesForTheDay, 2);
+assert.equal(grasmerePlaza.vehiclesForTheDay, 2);
+
+```
+
+Each object knows internally what is the correct price to charge. The price information in encapsulated into the Kiosk Objects.
+
+
+### Abstract classes
+
+
+### Polymorphism
+
+
 
 
 
