@@ -25,12 +25,54 @@ Object Orientation is doing exactly the same thing, it aims to create a 'unit' t
 
 A unit is called `class` in Object Oriented programming and they serve as a template for what behaviour data a 'unit' of behaviour or `object` can have. An instance of an `class` is called and `object`. More than one instance (copy) of a class can be created and each object instance keeps it own internal set of data.
 
+Look at this code:
+
 ```typescript
 
-let carOne = new Car();
+try{
+  let carOne = new Car();
+  let carTwo = new Car();
+  let carThree = new Car();
+  
+  carOne.start();
+  carTwo.start();
+  
+  carOne.accelerateBy(20);
+  carTwo.accelerateBy(30);
+  console.log(carOne.currentSpeed);
+  console.log(carTwo.currentSpeed);
+  
+  carOne.accelerateBy(20);
+  // carOne is now faster  
+  console.log(carOne.currentSpeed);
+  //carTwo is still going at the same speed
+  console.log(carTwo.currentSpeed);
+  
+  carTwo.stop();
+  //carTwo speed is now 0
+  console.log(carTwo.currentSpeed);
+  
+  // this will throw an error as carThree was never started
+  carThree.accelerateBy(20);
 
-carOne.start();
-carOne.accelerate();
-
-
+}
+catch(err){
+  console.log(err)
+}
 ```
+
+You will notice that each instance of the Car class have the same methods, but the state of their internal data is different.
+Exactly what a Car do internal when it accelerates is not clear, but you can ask each Car Object about it's `currentSpeed`. Note that `currentSpeed` attribute is read only from outside of the Object.
+
+Doing this will result in an error:
+
+```typescript
+carTwo.currentSpeed = 60;
+```
+
+The details of how a `Car` accelerates and stop is hidden inside the Class - the internal workings might even be changed and the users of the `Car` class would not notice anything. This concept is called `Encapsulation`.
+
+A Class is thus a container or 'unit' that can contain data and functions it can choose which methods and data it expose to users of the Class. This allows software developers to create maintainable software components of which they can change in internals without affecting the users of these Classes directly.
+
+
+
