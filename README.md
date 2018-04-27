@@ -118,6 +118,24 @@ The `PlazaKiosk` define what behaviour and object should implement to be conside
 
 If a class implement an interface it needs to implement all the methods and attributes define in the interface. 
 
+I will create two classes that implements the `PlazaKiosk` interface:
+
+```
+class HuguenotePlazaKiosk implements PlazaKiosk {
+  
+}
+```
+
+```
+class GrasmerePlazaKiosk implements PlazaKiosk {
+  
+}
+```
+
+
+
+
+
 
 
 
