@@ -86,19 +86,41 @@ Let's start by creating a `TollPlazaKiosk` class it should be able to charge fou
 
 The four categories are:
 
-* motorcycle, passenger cars, minibus taxi & car with caravan
+* motorcycles, passenger cars, minibus taxis & car with caravan
 * small trucks & busses with 4 wheels
 * trucks and busess with 6-8 wheels
 * trucks and busses with more than 8 wheels
 
 You will see that the categories is the same for the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza](). The prices for the each one is different though.
 
- Category                 |  Huguenote Tunnel                  | Grasmere Toll Plaza
+ Category         |  Huguenote Tunnel  | Grasmere Toll Plaza
 ------------------|--------------------|--------------------
-Motorcycle, passenger cars, minibus taxi & car with caravan|18.00| 9.00
+Motorcycles, passenger cars, minibus taxis & cars with caravan|18.00| 9.00
 Small trucks & busses with 4 wheels|47.00| 24.00
 Trucks and busess with 6-8 wheels|73.00| 28.00
 Trucks and busses with more than 8 wheels|118.00| 36.00
+
+The Toll Plaza Kiosk Console class should be able to charge the correct amount, keep a total for the day and a count of how many vehciles passed through the kiosk.
+
+This is where interfaces becomes usefull for a class to be a Plaza Kiosk it needs to implement specific methods. We need to create Kiosks for the Huguenote tunnel and the Grasmere Plazas to ensure they both implement the correct methods we will create an interface called `PlazaKiosk`
+
+```typescript
+interface PlazaKiosk {
+  charge(categoryType : string) : void
+  dailyTotal : number
+  vehiclesForTheDay : number
+}
+```
+
+The `PlazaKiosk` define what behaviour and object should implement to be considered an PlazaKiosk.
+
+If a class implement an interface it needs to implement all the methods and attributes define in the interface. 
+
+
+
+
+
+
 
 
 
