@@ -62,7 +62,7 @@ catch(err){
 ```
 
 You will notice that each instance of the Car class have the same methods, but the state of their internal data is different.
-Exactly what a Car do internal when it accelerates is not clear, but you can ask each Car Object about it's `currentSpeed`. Note that `currentSpeed` attribute is read only from outside of the Object.
+Exactly what a Car do internally when it accelerates is not clear, but you can ask each Car Object about it's `currentSpeed`. Note that `currentSpeed` attribute is readonly from outside of the Object.
 
 Doing this will result in an error:
 
@@ -72,7 +72,36 @@ carTwo.currentSpeed = 60;
 
 The details of how a `Car` accelerates and stop is hidden inside the Class - the internal workings might even be changed and the users of the `Car` class would not notice anything. This concept is called `Encapsulation`.
 
-A Class is thus a container or 'unit' that can contain data and functions it can choose which methods and data it expose to users of the Class. This allows software developers to create maintainable software components of which they can change in internals without affecting the users of these Classes directly.
+A Class is thus a container or 'unit' that can contain data and functions it can choose which methods and data it expose to users of the Class instance or Object. This allows software developers to create maintainable software components of which they can change in internals without affecting the users of these Classes directly.
+
+## Exploring Object Orientation further
+
+Object Orientation can be used to Encapsulate details of software components into classes to explore that further we will use a Toll Road Kiosk. At a toll road kiosk vehicles pays to use a piece of road, this money is then used to maintain this piece of road. In South Africa toll roads are called a Toll Plaza, they are scattered across across South Africa - two examples of those are the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza]().
+
+As you can see from the pictures above each Toll Plazas prices are different, but the concept is the same at each toll Plaza.
+
+I will create a Toll Plaza Kiosk console that Toll plaza attendants use to charge vehicles using the Toll Plaza the correct fee. The console will keep track of how many specific vehicles and vehicle types was served by a given attendant. The console will later help to calculate the total income for the a day, which number of vehicles used the toll Road for a given day and other usefull calculations. But we will focus on the Toll Road Kiosk class for starters.
+
+Let's start by creating a `TollPlazaKiosk` class it should be able to charge four category's of vehicles.
+
+The four categories are:
+
+* motorcycle, passenger cars, minibus taxi & car with caravan
+* small trucks & busses with 4 wheels
+* trucks and busess with 6-8 wheels
+* trucks and busses with more than 8 wheels
+
+If you will see that this categories is the same for both the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza](). The prices for the each Toll plaza is different though.
+
+
+ Categort                 |  Huguenote Tunnel                  | Grasmere Toll Plaza
+------------------|--------------------|--------------------
+Motorcycle, passenger cars, minibus taxi & car with caravan|
+Small trucks & busses with 4 wheels|
+Trucks and busess with 6-8 wheels|
+Trucks and busses with more than 8 wheels|
+
+
 
 
 
