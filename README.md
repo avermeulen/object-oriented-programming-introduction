@@ -91,7 +91,7 @@ The four categories are:
 * trucks and busess with 6-8 wheels
 * trucks and busses with more than 8 wheels
 
-If you will see that this categories is the same for both the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza](). The prices for the each Toll plaza is different though.
+You will see that the categories is the same for the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza](). The prices for the each one is different though.
 
  Category                 |  Huguenote Tunnel                  | Grasmere Toll Plaza
 ------------------|--------------------|--------------------
