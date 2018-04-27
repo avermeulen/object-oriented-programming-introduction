@@ -102,6 +102,8 @@ Trucks and busses with more than 8 wheels|118.00| 36.00
 
 The Toll Plaza Kiosk Console class should be able to charge the correct amount, keep a total for the day and a count of how many vehciles passed through the kiosk.
 
+### Interfaces
+
 This is where interfaces becomes usefull for a class to be a Plaza Kiosk it needs to implement specific methods. We need to create Kiosks for the Huguenote tunnel and the Grasmere Plazas to ensure they both implement the correct methods we will create an interface called `PlazaKiosk`
 
 ```typescript
