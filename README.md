@@ -76,7 +76,11 @@ A Class is thus a container or 'unit' that can contain data and functions it can
 
 ## Exploring Object Orientation further
 
-Object Orientation can be used to Encapsulate details of software components into classes to explore that further we will use a Toll Road Kiosk. At a toll road kiosk vehicles pays to use a piece of road, this money is then used to maintain this piece of road. In South Africa toll roads are called a Toll Plaza, they are scattered across across South Africa - two examples of those are the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza]().
+Object Orientation can be used to Encapsulate details of software components into classes to explore that further we will use a Toll Road Kiosk. At a toll road kiosk vehicles pays to use a piece of road, this money is then used to maintain this piece of road. In South Africa toll roads are called a Toll Plaza, they are scattered across across South Africa - two examples of those are the **Huguenote Toll Plaza** and the **Grasmere Toll Plaza**.
+
+![Huguenote Toll Plaza](./images/huguenot-plaza.jpg):{width : 5em;}
+
+![Grasmere Toll Plaza](./images/grasmere-plaza.jpg).
 
 As you can see from the pictures above each Toll Plazas prices are different, but the concept is the same at each toll Plaza.
 
@@ -331,6 +335,26 @@ assert.equal(grasmerePlaza.dailyVehicleCount, 2);
 ```
 
 But there is less code now as each of the PlazaKiosk class is sharing some behviour which they are inheriting from the `PlazaKioskBase` class.
+
+Next I will create a web interface for the Kiosk in the `index.html` file.
+
+### Object Constructors
+
+I will create a `KioskConsole` class that takes a reference to an instance of the `PlazaKiosk` interface when instantiated.
+
+The constructor is the first method that is getting called on an Object when a new Class is instantiated.
+
+```typescript
+class KioskConsole{
+    private _kiosk: PlazaKiosk;
+    constructor(kiosk : PlazaKiosk){
+        this._kiosk = kiosk;
+        document
+    }
+}
+```
+
+The `KioskConsole` class will link the `PlazaKiosk` class to the DOM. It will send values into the kiosk object and values back from it.
 
 ### Polymorphism
 
