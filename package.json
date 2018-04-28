@@ -1,0 +1,20 @@
+{
+  "name": "object-oriented-programming-introduction",
+  "version": "1.0.0",
+  "description": "Web developers can achieve alot these days without much knowledge of Object Oriented programming. Although they might be using Objects they don't know how they are composed and why they are composed they way they are.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avermeulen/object-oriented-programming-introduction.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/avermeulen/object-oriented-programming-introduction/issues"
+  },
+  "homepage": "https://github.com/avermeulen/object-oriented-programming-introduction#readme"
+}

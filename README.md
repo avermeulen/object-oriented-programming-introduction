@@ -1,8 +1,8 @@
 # object-oriented-programming-introduction
 
-Web developers can achieve alot these days without much knowledge of Object Oriented programming. Although they might be using Objects they don't know how they are composed and why they are composed they way they are.
+Web developers can achieve alot these days without much knowledge of Object Oriented programming. Although they might be using Objects they don't know alot about how Objects are created and why they are created the way they are are created.
 
-Object Oriented knowledge is a powerfull approach to build composable and maintainable software. This is a gentle, but robust intro to the world of Object Orientation. 
+Object Orientation programming is a powerfull approach to building composable and maintainable software. This is a gentle, yet robust intro to the world of Object Orientation. 
 
 We will start of by answering the questions of what Object Orientation is.
 
@@ -104,13 +104,13 @@ The Toll Plaza Kiosk Console class should be able to charge the correct amount, 
 
 ### Interfaces
 
-This is where interfaces becomes usefull for a class to be a Plaza Kiosk it needs to implement specific methods. We need to create Kiosks for the Huguenote tunnel and the Grasmere Plazas to ensure they both implement the correct methods we will create an interface called `PlazaKiosk`
+This is where **interfaces** becomes usefull for a class to be a Plaza Kiosk it needs to implement specific methods. We need to create Kiosks for the Huguenote tunnel and the Grasmere Plazas to ensure they both implement the correct methods we will create an interface called `PlazaKiosk`
 
 ```typescript
-interface PlazaKiosk {
-  charge(categoryType : string) : void
-  dailyTotal : number
-  vehiclesForTheDay : number
+interface PlazaKiosk{
+    charge(category : string) : void;
+    dailyTotal : number;
+    dailyVehicleCount : number;
 }
 ```
 
@@ -122,43 +122,215 @@ I will create two classes that implements the `PlazaKiosk` interface:
 
 ```typescript
 class HuguenotePlazaKiosk implements PlazaKiosk {
-  
+    private total:number = 0;
+    private vehicleCount:number = 0;
+
+    private chargeVehicle(price : number){
+        this.total += price;
+        this.vehicleCount++;
+    }
+
+    charge(category: string): void {
+        if (category === "one"){
+            this.chargeVehicle(18);
+        }
+        else if (category === "two"){
+            this.chargeVehicle(37);
+            
+        }
+        else if (category === "three"){
+            this.chargeVehicle(28);
+        }
+        else if (category === "four"){
+            this.chargeVehicle(36);
+        }
+    }
+    
+    get dailyTotal(): number{
+        return this.total;
+    };
+
+    get dailyVehicleCount(): number{
+        return this.vehicleCount;
+    };  
 }
 ```
 
 ```typescript
 class GrasmerePlazaKiosk implements PlazaKiosk {
-  
+    
+    private total:number = 0;
+    private vehicleCount:number = 0;
+
+    private chargeVehicle(price : number){
+        this.total += price;
+        this.vehicleCount++;
+    }
+
+    charge(category: string): void {
+        if (category === "one"){
+            this.chargeVehicle(9);
+        }
+        else if (category === "two"){
+            this.chargeVehicle(24);
+            
+        }
+        else if (category === "three"){
+            this.chargeVehicle(73);
+        }
+        else if (category === "four"){
+            this.chargeVehicle(118);
+        }
+    }
+    
+    get dailyTotal(): number{
+        return this.total;
+    };
+
+    get dailyVehicleCount(): number{
+        return this.vehicleCount;
+    };
+
 }
 ```
 
-Now we can create instance of both classes for both kiosk types:
-
+Now we can create instances of both classes for each kiosk types:
 
 ```typescript
 
 let huguenotePlaza = new HuguenotePlazaKiosk();
 let grasmerePlaza = new GrasmerePlazaKiosk();
 
-huguenotePlaza.charge('category1');
-huguenotePlaza.charge('category2');
+huguenotePlaza.charge('one');
+huguenotePlaza.charge('two');
 
-grasmerePlaza.charge('category1');
-grasmerePlaza.charge('category2');
+grasmerePlaza.charge('one');
+grasmerePlaza.charge('two');
 
 assert.equal(huguenotePlaza.dailyTotal, 65);
 assert.equal(grasmerePlaza.dailyTotal, 33);
 
-assert.equal(huguenotePlaza.vehiclesForTheDay, 2);
-assert.equal(grasmerePlaza.vehiclesForTheDay, 2);
+assert.equal(huguenotePlaza.dailyVehicleCount, 2);
+assert.equal(grasmerePlaza.dailyVehicleCount, 2);
 
 ```
 
 Each object knows internally what is the correct price to charge. The price information in encapsulated into the Kiosk Objects.
 
-
 ### Abstract classes
 
+There is alot of repetition in these two classes it is only the `charge` method that is different for each class.
+
+I can create a common class that implement the shared methods of the Kiosks and then let each kiosk implement it's own specific logic. This is what Abstract Classes are for.
+
+Abstract classes implement some methods and leaves other methods unimplemented - classes can then extend an Abstract class and implement their own logic.
+
+To create an Abstract class for PlazaKiosks lets create a `PlazaKioskBase` abstract class.
+
+```typescript
+abstract class PlazaKioskBase{
+    private total:number = 0;
+    private vehicleCount:number = 0;
+
+    // note this method is now protected
+    protected chargeVehicle(price : number){
+        this.total += price;
+        this.vehicleCount++;
+    }
+    
+    get dailyTotal(): number{
+        return this.total;
+    };
+
+    get dailyVehicleCount(): number{
+        return this.vehicleCount;
+    };
+
+    abstract charge(category: string): void
+
+}
+```
+
+**Note:** that abstract classes can't be instantiated.
+
+And that this code will fail:
+
+```typescript
+let kiosk = new PlazaKioskBase();
+```
+
+The `PlazaKioskBase` abstract class needs to be reference in another class by using the `extend` keyword and by implementing the `charge` method.
+
+**Also note:** the `chargeVehicle` function is **protected** so that it is accessible from classes that inherits from the `PlazaKioskBase` class. Protected methods and properties is accessible in the classes itself and sub-classes, that is classes that is inheriting from the (base)class. The class that other classes are inheriting from is called a base class.
+
+## Inheritance
+
+Each Kiosk class will now use the shared behaviour in the `PlazaKioskBase` abstract base class through inheritance. Inheritance allow Objects to use behaviour from Objects that they are inheriting from. Objects can only inherit from one Object in main stream Object Oriented languages.
+
+The `GrasmerePlazaKiosk` class is now much smaller as it is inheriting behaviour from the `PlazaKioskBase` class and is only implementing it's own specific cost structure.
+
+```typescript
+class GrasmerePlazaKiosk extends PlazaKioskBase {
+    
+    charge(category: string): void {
+        if (category === "one"){
+            this.chargeVehicle(9);
+        }
+        else if (category === "two"){
+            this.chargeVehicle(24);
+        }
+        else if (category === "three"){
+            this.chargeVehicle(28);
+        }
+        else if (category === "four"){
+            this.chargeVehicle(36);
+        }
+    }
+}
+```
+
+The `HuguenotePlazaKiosk` is also much smaller:
+
+```typescript
+class HuguenotePlazaKiosk extends PlazaKioskBase {
+    charge(category: string): void {
+        if (category === "one"){
+            this.chargeVehicle(18);
+        }
+        else if (category === "two"){
+            this.chargeVehicle(47);
+            
+        }
+        else if (category === "three"){
+            this.chargeVehicle(73);
+        }
+        else if (category === "four"){
+            this.chargeVehicle(118);
+        }
+    }    
+}
+```
+
+Everything is still working as before:
+
+```typescript
+let huguenotePlaza = new HuguenotePlazaKiosk();
+let grasmerePlaza = new GrasmerePlazaKiosk();
+
+huguenotePlaza.charge('one');
+huguenotePlaza.charge('two');
+
+grasmerePlaza.charge('one');
+grasmerePlaza.charge('two');
+
+assert.equal(huguenotePlaza.dailyTotal, 65);
+assert.equal(grasmerePlaza.dailyTotal, 33);
+
+assert.equal(huguenotePlaza.dailyVehicleCount, 2);
+assert.equal(grasmerePlaza.dailyVehicleCount, 2);
+```
+
+But there is less code now as each of the PlazaKiosk class is sharing some behviour which they are inheriting from the `PlazaKioskBase` class.
 
 ### Polymorphism
 
