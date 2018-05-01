@@ -15,6 +15,35 @@ Next we will focus on Object Orientation a few Object Orientation building block
 
 After that I will look at Object Orientation using Design Patterns.
 
+## Using TypeScript
+
+I will use TypeScript for the Object Orientation intro, because it supports Object Orientation in a similar way to Java and C#. TypeScript is a superset of JavaScript that transpiles into the desired target version of JavaScript.
+
+To install TypeScript you need NodeJS.
+
+Run the command: `npm install -g tsc`
+Once installed you should be able to run the `tsc` command from a terminal window.
+
+To setup a new TypeScript project:
+* create a project folder
+* create a folder called `src` in the project folder
+* in the project folder do `tsc --init`
+* this will create `a tsconfig.json` file edit this file to contain this:
+
+```json
+{
+  "compilerOptions": {
+    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
+    "module": "none",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */  
+      "outDir": "./dist",                        /* Redirect output structure to the directory. */
+      "strict": true,                           /* Enable all strict type-checking options. */
+  },
+  "location" : ["src/**/*"]
+}
+```
+
+
+
 ## Object Orientation
 
 Object Orientation (OO) is a programming model that combines data and behaviour into one 'unit'. A 'unit' have data and some functions that can use the data inside the unit. The data and the exact behaviour inside the 'unit' is hidden. And can not be accessed from out side the 'unit'. With Object Orientation these 'units' aim to model things in a way that we aim things in real life. 
