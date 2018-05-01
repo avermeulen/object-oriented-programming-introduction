@@ -17,7 +17,7 @@ After that I will look at Object Orientation using Design Patterns.
 
 ## Using TypeScript
 
-I will use TypeScript for the Object Orientation intro, because it supports Object Orientation in a similar way to Java and C#. TypeScript is a superset of JavaScript that transpiles into the desired target version of JavaScript.
+I will use TypeScript for this Object Orientation intro, because it supports Object Orientation in a similar way to Java and C#. TypeScript is a superset of JavaScript that transpiles into the desired target version of JavaScript.
 
 To install TypeScript you need NodeJS.
 
@@ -46,7 +46,11 @@ This will configure TypeScript to look for source files in the `src` folder and 
 
 If your create a file in the src folder called `car.ts` if will be transpiled into a file called `car.js` in the dist folder.
 
+To transpile TypeScript code to JavaScript run `tsc` in the project folder or run TypeScipt in watch mode using `tsc -w` - then it will detect all changes in the `src` folder and transpiles the files upon change.
 
+You can read more about TypeScript classes [here](https://www.typescriptlang.org/docs/handbook/classes.html) and interfaces [here](https://www.typescriptlang.org/docs/handbook/interfaces.html).
+
+TypeScript also introduce [typing](https://www.typescriptlang.org/docs/handbook/basic-types.html) to JavaScript.
 
 ## Object Orientation
 
@@ -387,9 +391,11 @@ class KioskConsole{
 }
 ```
 
-The `KioskConsole` class will link the `PlazaKiosk` class to the DOM. It will send values into the kiosk object and values back from it.
+The `KioskConsole` class will link the `PlazaKiosk` class to the DOM. It will send values into the kiosk object and get values back from it.
 
 ### Polymorphism
+
+
 
 
 
