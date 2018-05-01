@@ -1,8 +1,6 @@
 # object-oriented-programming-introduction
 
-Web developers can achieve alot these days without much knowledge of Object Oriented programming. Although they might be using Objects they don't know alot about how Objects are created and why they are created the way they are are created.
-
-Object Orientation programming is a powerfull approach to building composable and maintainable software. This is a gentle, yet robust intro to the world of Object Orientation. 
+Web developers can achieve alot these days without much knowledge of Object Oriented programming. Although they might be using Objects they might not know alot about how Objects are created and why they are created the way they are created. Object Orientation programming is a powerfull approach to building composable and maintainable software though. This is a gentle, yet robust intro to the world of Object Orientated programming.
 
 We will start of by answering the questions of what Object Orientation is.
 
@@ -10,7 +8,7 @@ Next we will focus on Object Orientation a few Object Orientation building block
 
 * Encapsulation
 * Interfaces
-* Interheritance
+* Inheritance
 * Polymorpism
 
 After that I will look at Object Orientation using Design Patterns.
@@ -74,6 +72,17 @@ The details of how a `Car` accelerates and stop is hidden inside the Class - the
 
 A Class is thus a container or 'unit' that can contain data and functions it can choose which methods and data it expose to users of the Class instance or Object. This allows software developers to create maintainable software components of which they can change in internals without affecting the users of these Classes directly.
 
+## Using TypeScript
+
+I am using TypeScript to explere Object Oriented programming.
+
+### Install it like this
+
+### Read more
+
+You can learn more about using Classes in TypeScript [here](https://www.typescriptlang.org/docs/handbook/classes.html).
+
+
 ## Exploring Object Orientation further
 
 Object Orientation can be used to Encapsulate details of software components into classes to explore that further we will use a Toll Road Kiosk. At a toll road kiosk vehicles pays to use a piece of road, this money is then used to maintain this piece of road. In South Africa toll roads are called a Toll Plaza, they are scattered across across South Africa - two examples of those are the **Huguenote Toll Plaza** and the **Grasmere Toll Plaza**.
@@ -104,7 +113,7 @@ Small trucks & busses with 4 wheels|47.00| 24.00
 Trucks and busess with 6-8 wheels|73.00| 28.00
 Trucks and busses with more than 8 wheels|118.00| 36.00
 
-The Toll Plaza Kiosk Console class should be able to charge the correct amount, keep a total for the day and a count of how many vehciles passed through the kiosk.
+The Toll Plaza Kiosk class should be able to charge the correct amount, keep a total for the day and a count of how many vehicles passed through the kiosk. It also needs a description to identify the toll plaza it is for.
 
 ### Interfaces
 
@@ -115,6 +124,7 @@ interface PlazaKiosk{
     charge(category : string) : void;
     dailyTotal : number;
     dailyVehicleCount : number;
+    description : string;
 }
 ```
 
@@ -229,29 +239,28 @@ I can create a common class that implement the shared methods of the Kiosks and 
 
 Abstract classes implement some methods and leaves other methods unimplemented - classes can then extend an Abstract class and implement their own logic.
 
-To create an Abstract class for PlazaKiosks lets create a `PlazaKioskBase` abstract class.
+To create an Abstract class for PlazaKiosks lets create a `PlazaKioskBase` abstract class. It should implement the `PlazaKiosk` interface. The `charge` method will be marked as abstract and won't be implemented in the `PlazaKioskBase` class
 
 ```typescript
-abstract class PlazaKioskBase{
-    private total:number = 0;
-    private vehicleCount:number = 0;
+abstract class PlazaKioskBase implements PlazaKiosk{
+    private _dailyTotal:number = 0;
 
-    // note this method is now protected
+    private _dailyVehicleCount:number = 0;
+
     protected chargeVehicle(price : number){
-        this.total += price;
-        this.vehicleCount++;
+        this._dailyTotal += price;
+        this._dailyVehicleCount++;
     }
     
     get dailyTotal(): number{
-        return this.total;
+        return this._dailyTotal;
     };
 
     get dailyVehicleCount(): number{
-        return this.vehicleCount;
+        return this._dailyVehicleCount;
     };
 
-    abstract charge(category: string): void
-
+    abstract charge(category: string): number
 }
 ```
 
