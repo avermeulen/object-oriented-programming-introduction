@@ -28,19 +28,23 @@ To setup a new TypeScript project:
 * create a project folder
 * create a folder called `src` in the project folder
 * in the project folder do `tsc --init`
-* this will create `a tsconfig.json` file edit this file to contain this:
+* this will create `a tsconfig.json` file, edit this file to contain this:
 
 ```json
 {
   "compilerOptions": {
-    "target": "es5",                          /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
-    "module": "none",                     /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */  
-      "outDir": "./dist",                        /* Redirect output structure to the directory. */
-      "strict": true,                           /* Enable all strict type-checking options. */
+      "target": "es5",                        
+      "module": "none",                    
+      "outDir": "./dist",                       
+      "strict": true
   },
   "location" : ["src/**/*"]
 }
 ```
+
+This will configure TypeScript to look for source files in the `src` folder and transpiles them into the `dist` (distributio) folder when running the `tsc` command.
+
+If your create a file in the src folder called `car.ts` if will be transpiled into a file called `car.js` in the dist folder.
 
 
 
