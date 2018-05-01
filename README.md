@@ -13,6 +13,43 @@ Next we will focus on Object Orientation a few Object Orientation building block
 
 After that I will look at Object Orientation using Design Patterns.
 
+## Using TypeScript
+
+I will use TypeScript for this Object Orientation intro, because it supports Object Orientation in a similar way to Java and C#. TypeScript is a superset of JavaScript that transpiles into the desired target version of JavaScript.
+
+To install TypeScript you need NodeJS.
+
+Run the command: `npm install -g tsc`
+Once installed you should be able to run the `tsc` command from a terminal window.
+
+To setup a new TypeScript project:
+* create a project folder
+* create a folder called `src` in the project folder
+* in the project folder do `tsc --init`
+* this will create `a tsconfig.json` file, edit this file to contain this:
+
+```json
+{
+  "compilerOptions": {
+      "target": "es5",                        
+      "module": "none",                    
+      "outDir": "./dist",                       
+      "strict": true
+  },
+  "location" : ["src/**/*"]
+}
+```
+
+This will configure TypeScript to look for source files in the `src` folder and transpiles them into the `dist` (distributio) folder when running the `tsc` command.
+
+If your create a file in the src folder called `car.ts` if will be transpiled into a file called `car.js` in the dist folder.
+
+To transpile TypeScript code to JavaScript run `tsc` in the project folder or run TypeScipt in watch mode using `tsc -w` - then it will detect all changes in the `src` folder and transpiles the files upon change.
+
+You can read more about TypeScript classes [here](https://www.typescriptlang.org/docs/handbook/classes.html) and interfaces [here](https://www.typescriptlang.org/docs/handbook/interfaces.html).
+
+TypeScript also introduce [typing](https://www.typescriptlang.org/docs/handbook/basic-types.html) to JavaScript.
+
 ## Object Orientation
 
 Object Orientation (OO) is a programming model that combines data and behaviour into one 'unit'. A 'unit' have data and some functions that can use the data inside the unit. The data and the exact behaviour inside the 'unit' is hidden. And can not be accessed from out side the 'unit'. With Object Orientation these 'units' aim to model things in a way that we aim things in real life. 
@@ -363,9 +400,11 @@ class KioskConsole{
 }
 ```
 
-The `KioskConsole` class will link the `PlazaKiosk` class to the DOM. It will send values into the kiosk object and values back from it.
+The `KioskConsole` class will link the `PlazaKiosk` class to the DOM. It will send values into the kiosk object and get values back from it.
 
 ### Polymorphism
+
+
 
 
 
