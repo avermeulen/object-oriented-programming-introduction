@@ -47,11 +47,13 @@ To setup a new TypeScript project:
 
 This will configure TypeScript to look for source files in the `src` folder and transpiles them into the `dist` (distribution) folder when running the `tsc` command.
 
-> Onwaba thinks i would be lovely if I could try pout this example. the reasn I did not there is not enough guidance for me to try it out and see what happpens. The next example would have been much better to follow if I had tried this example. I like it is simple yet contains so much info
+> Onwaba thinks it would be lovely if I could try out this example. The reasn I did not there is not enough guidance for me to try it out and see what happpens. The next example would have been much better to follow if I had tried this example. I like it is simple yet contains so much info. The guidance I was exepting to see was where to have what.
 
 If you create a file in the src folder called `car.ts` if will be transpiled into a file called `car.js` in the dist folder.
 
 To transpile TypeScript code to JavaScript run `tsc` in the project folder or run TypeScipt in watch mode using `tsc -w` - then it will detect all changes in the `src` folder and transpiles the files upon change.
+
+> Onwaba asks when and where should I run `tsc - w`?
 
 You can read more about TypeScript classes [here](https://www.typescriptlang.org/docs/handbook/classes.html) and interfaces [here](https://www.typescriptlang.org/docs/handbook/interfaces.html).
 
@@ -66,6 +68,8 @@ Like can `Car` for example a car can be `started`, and it can `accelerate`, it h
 Object Orientation is doing exactly the same thing, it aims to create a 'unit' that hides complexity inside of them. A 'unit' can have some internal data and behviour, but it expose external behviour that can be used to interact with the unit.
 
 A unit is called `class` in Object Oriented programming and they serve as a template for what behaviour data a 'unit' of behaviour or `object` can have. An instance of an `class` is called and `object`. More than one instance (copy) of a class can be created and each object instance keeps it own internal set of data.
+
+> For example this code should be on your cars.ts
 
 Look at this code:
 
@@ -358,6 +362,8 @@ class HuguenotePlazaKiosk extends PlazaKioskBase {
 ```
 
 Everything is still working as before:
+
+> Onwaba asks where shpuld this code be?
 
 ```typescript
 let huguenotePlaza = new HuguenotePlazaKiosk();
