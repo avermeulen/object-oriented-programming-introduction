@@ -21,7 +21,7 @@ I will use TypeScript for this Object Orientation intro, because it supports Obj
 
 To install TypeScript you need NodeJS.
 
-> Onwaba: this is the `npm i -g typescript@2.3.2 ` that worked for me becuse the given on installed an old version that resulted on `tsc --init` to give an error.
+> Onwaba: this is the command `npm i -g typescript@2.3.2 ` that worked for me becuse the given one installed an old version that resulted on `tsc --init` to give an error.
 
 Run the command: `npm install -g tsc`
 Once installed you should be able to run the `tsc` command from a terminal window.
@@ -44,7 +44,10 @@ To setup a new TypeScript project:
 }
 ```
 
+
 This will configure TypeScript to look for source files in the `src` folder and transpiles them into the `dist` (distribution) folder when running the `tsc` command.
+
+> Onwaba thinks i would be lovely if I could try pout this example. the reasn I did not there is not enough guidance for me to try it out and see what happpens. The next example would have been much better to follow if I had tried this example. I like it is simple yet contains so much info
 
 If you create a file in the src folder called `car.ts` if will be transpiled into a file called `car.js` in the dist folder.
 
