@@ -21,6 +21,8 @@ I will use TypeScript for this Object Orientation intro, because it supports Obj
 
 To install TypeScript you need NodeJS.
 
+> Onwaba: this is the `npm i -g typescript@2.3.2 ` that worked for me becuse the given on installed an old version that resulted on `tsc --init` to give an error.
+
 Run the command: `npm install -g tsc`
 Once installed you should be able to run the `tsc` command from a terminal window.
 
