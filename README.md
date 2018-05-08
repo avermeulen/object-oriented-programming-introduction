@@ -19,16 +19,16 @@ I will use TypeScript for this Object Orientation intro, because it supports Obj
 
 To install TypeScript you need NodeJS.
 
-> Onwaba: this is the command `npm i -g typescript@2.3.2 ` that worked for me becuse the given one installed an old version that resulted on `tsc --init` to give an error.
+> Onwaba: this is the command `npm i -g typescript@2.3.2 ` that worked for me because the given one installed an old version that resulted on `tsc --init` to give an error.
 
 Run the command: `npm install -g tsc`
 Once installed you should be able to run the `tsc` command from a terminal window.
 
 To setup a new TypeScript project:
-* create a project folder
-* create a folder called `src` in the project folder
-* in the project folder do `tsc --init`
-* this will create `a tsconfig.json` file, edit this file to contain this:
+* create a project folder called `cars`
+* create a folder called `src` in the `cars` folder
+* in the `cars` folder do `tsc --init`
+* this will create a `tsconfig.json` file, copy the text below into the `tsconfig.json` file:
 
 ```json
 {
@@ -42,16 +42,19 @@ To setup a new TypeScript project:
 }
 ```
 
-
 This will configure TypeScript to look for source files in the `src` folder and transpiles them into the `dist` (distribution) folder when running the `tsc` command.
 
-> Onwaba thinks it would be lovely if I could try out this example. The reasn I did not there is not enough guidance for me to try it out and see what happpens. The next example would have been much better to follow if I had tried this example. I like it is simple yet contains so much info. The guidance I was exepting to see was where to have what.
+> Onwaba thinks it would be lovely if I could try out this example. The reason I did not there is not enough guidance for me to try it out and see what happens. The next example would have been much better to follow if I had tried this example. I like it is simple yet contains so much info. The guidance I was expecting is to see was where to do have what.
 
-If you create a file in the src folder called `car.ts` if will be transpiled into a file called `car.js` in the dist folder.
+Let's try this out:
 
-To transpile TypeScript code to JavaScript run `tsc` in the project folder or run TypeScipt in watch mode using `tsc -w` - then it will detect all changes in the `src` folder and transpiles the files upon change.
+* Create a file in the `src` folder called `car.ts`,
+* transpile it into JavaScript by running `tsc` in the project folder,
+* a file called `car.js` should be create in the dist folder.
 
-> Onwaba asks when and where should I run `tsc - w`?
+To transpile TypeScript code to JavaScript run `tsc` in the project folder or
+
+> You can run TypeScipt in watch mode using `tsc -w` - in the `cars` folder in the terminal. Then it will detect any changes in the `src` folder and transpile the files upon any change.
 
 You can read more about TypeScript classes [here](https://www.typescriptlang.org/docs/handbook/classes.html) and interfaces [here](https://www.typescriptlang.org/docs/handbook/interfaces.html).
 
@@ -59,43 +62,45 @@ TypeScript also introduce [typing](https://www.typescriptlang.org/docs/handbook/
 
 ## Object Orientation
 
-Object Orientation (OO) is a programming model that combines data and behaviour into one 'unit'. A 'unit' have data and some functions that can use the data inside the unit. The data and the exact behaviour inside the 'unit' is hidden. And can not be accessed from out side the 'unit'. With Object Orientation these 'units' aim to model things in a way that we aim things in real life. 
+Object Orientation (OO) is a programming model that combines data and behaviour into one 'unit'. A 'unit' have data and some functions that can use the data inside the unit. The data and the exact behaviour inside the 'unit' is hidden. And can not be accessed from out side the 'unit'. With Object Orientation these 'units' aim to model things in a way that we aim things in real life.
 
-Like can `Car` for example a car can be `started`, and it can `accelerate`, it has a `mileage` attribute that is affected by the `drive` function of the `car`. When driving a car I don't know exactly how things are working internally, but I know how to drive it to get where I need to go.
+Like a `Car` for example a Car can be `started`, and it can `accelerate`, it has a `mileage` attribute that is affected by the `drive` function of the `car`. When driving a car I don't know exactly how things are working internally, but I know how to drive it to get where I need to go.
 
-Object Orientation is doing exactly the same thing, it aims to create a 'unit' that hides complexity inside of them. A 'unit' can have some internal data and behviour, but it expose external behviour that can be used to interact with the unit.
+Object Orientation is doing exactly the same thing, it aims to create a 'unit' that hides complexity inside of them. A 'unit' can have some internal data and behaviour, but it expose external behaviour that can be used to interact with the unit.
 
 A unit is called `class` in Object Oriented programming and they serve as a template for what behaviour data a 'unit' of behaviour or `object` can have. An instance of an `class` is called and `object`. More than one instance (copy) of a class can be created and each object instance keeps it own internal set of data.
 
-> For example this code should be on your cars.ts
+> To get TypeScript support in Atom install the **atom-typescript** plugin.
 
-Look at this code:
+Look at this code and copy it into `car.ts`:
 
 ```typescript
+
+
 
 try{
   let carOne = new Car();
   let carTwo = new Car();
   let carThree = new Car();
-  
+
   carOne.start();
   carTwo.start();
-  
+
   carOne.accelerateBy(20);
   carTwo.accelerateBy(30);
   console.log(carOne.currentSpeed);
   console.log(carTwo.currentSpeed);
-  
+
   carOne.accelerateBy(20);
   // carOne is now faster  
   console.log(carOne.currentSpeed);
   //carTwo is still going at the same speed
   console.log(carTwo.currentSpeed);
-  
+
   carTwo.stop();
   //carTwo speed is now 0
   console.log(carTwo.currentSpeed);
-  
+
   // this will throw an error as carThree was never started
   carThree.accelerateBy(20);
 
@@ -106,6 +111,7 @@ catch(err){
 ```
 
 You will notice that each instance of the Car class have the same methods, but the state of their internal data is different.
+
 Exactly what a Car do internally when it accelerates is not clear, but you can ask each Car Object about it's `currentSpeed`. Note that `currentSpeed` attribute is readonly from outside of the Object.
 
 Doing this will result in an error:
@@ -118,9 +124,52 @@ The details of how a `Car` accelerates and stop is hidden inside the Class - the
 
 A Class is thus a container or 'unit' that can contain data and functions it can choose which methods and data it expose to users of the Class instance or Object. This allows software developers to create maintainable software components of which they can change in internals without affecting the users of these Classes directly.
 
+### Creating a class
+
+Up until now the code in the `car.ts` file would have giving you an error as the Car class doesn't exist.
+
+Copy this code into the `car.ts` file. Above the try block that is already in there.
+
+```typescript
+
+class Car {
+  private started: boolean = false;
+  private _currentSpeed: number = 0;
+
+  start(){
+      this.started = true;
+  }
+
+  stop(){
+      this.started = false;
+      this._currentSpeed = 0;
+  }
+
+  accelerateBy(increase : number) : void{
+    if (this.started){
+      this._currentSpeed += increase;
+    }
+  }
+
+  get currentSpeed () : number{
+    return this._currentSpeed;
+  }
+}
+
+```
+
+Run `tsc` in the `cars` folder. You should now have a `cars.js` file in the `dist` folder.
+
+Run the `cars.js` like this `node cars.js` - you should not get any errors and it should print some info to the screen.
+
+> Onwaba please add what should be printed to the screen
+
+```
+```
+
 ## Using TypeScript
 
-I am using TypeScript to explere Object Oriented programming.
+I am using TypeScript to explore Object Oriented programming.
 
 ### Install it like this
 
@@ -139,7 +188,7 @@ Object Orientation can be used to Encapsulate details of software components int
 
 As you can see from the pictures above each Toll Plazas prices are different, but the concept is the same at each toll Plaza.
 
-I will create a Toll Plaza Kiosk console that Toll plaza attendants use to charge vehicles using the Toll Plaza the correct fee. The console will keep track of how many specific vehicles and vehicle types was served by a given attendant. The console will later help to calculate the total income for the a day, which number of vehicles used the toll Road for a given day and other usefull calculations. But we will focus on the Toll Road Kiosk class for starters.
+I will create a Toll Plaza Kiosk console that Toll plaza attendants use to charge vehicles using the Toll Plaza the correct fee. The console will keep track of how many specific vehicles and vehicle types was served by a given attendant. The console will later help to calculate the total income for the a day, which number of vehicles used the toll Road for a given day and other useful calculations. But we will focus on the Toll Road Kiosk class for starters.
 
 Let's start by creating a `TollPlazaKiosk` class it should be able to charge four category's of vehicles.
 
@@ -147,7 +196,7 @@ The four categories are:
 
 * motorcycles, passenger cars, minibus taxis & car with caravan
 * small trucks & busses with 4 wheels
-* trucks and busess with 6-8 wheels
+* trucks and busses with 6-8 wheels
 * trucks and busses with more than 8 wheels
 
 You will see that the categories is the same for the [Huguenote Toll Plaza]() and the [Grasmere Toll Plaza](). The prices for the each one is different though.
@@ -156,14 +205,14 @@ You will see that the categories is the same for the [Huguenote Toll Plaza]() an
 ------------------|--------------------|--------------------
 Motorcycles, passenger cars, minibus taxis & cars with caravan|18.00| 9.00
 Small trucks & busses with 4 wheels|47.00| 24.00
-Trucks and busess with 6-8 wheels|73.00| 28.00
+Trucks and busses with 6-8 wheels|73.00| 28.00
 Trucks and busses with more than 8 wheels|118.00| 36.00
 
 The Toll Plaza Kiosk class should be able to charge the correct amount, keep a total for the day and a count of how many vehicles passed through the kiosk. It also needs a description to identify the toll plaza it is for.
 
 ### Interfaces
 
-This is where **interfaces** becomes usefull for a class to be a Plaza Kiosk it needs to implement specific methods. We need to create Kiosks for the Huguenote tunnel and the Grasmere Plazas to ensure they both implement the correct methods we will create an interface called `PlazaKiosk`
+This is where **interfaces** becomes useful for a class to be a Plaza Kiosk it needs to implement specific methods. We need to create Kiosks for the Huguenote tunnel and the Grasmere Plazas to ensure they both implement the correct methods we will create an interface called `PlazaKiosk`
 
 ```typescript
 interface PlazaKiosk{
@@ -176,7 +225,7 @@ interface PlazaKiosk{
 
 The `PlazaKiosk` define what behaviour and object should implement to be considered an PlazaKiosk.
 
-If a class implement an interface it needs to implement all the methods and attributes defined in the interface. 
+If a class implement an interface it needs to implement all the methods and attributes defined in the interface.
 
 I will create two classes that implements the `PlazaKiosk` interface:
 
@@ -196,7 +245,7 @@ class HuguenotePlazaKiosk implements PlazaKiosk {
         }
         else if (category === "two"){
             this.chargeVehicle(37);
-            
+
         }
         else if (category === "three"){
             this.chargeVehicle(28);
@@ -205,7 +254,7 @@ class HuguenotePlazaKiosk implements PlazaKiosk {
             this.chargeVehicle(36);
         }
     }
-    
+
     get dailyTotal(): number{
         return this.total;
     };
@@ -218,7 +267,7 @@ class HuguenotePlazaKiosk implements PlazaKiosk {
 
 ```typescript
 class GrasmerePlazaKiosk implements PlazaKiosk {
-    
+
     private total:number = 0;
     private vehicleCount:number = 0;
 
@@ -233,7 +282,7 @@ class GrasmerePlazaKiosk implements PlazaKiosk {
         }
         else if (category === "two"){
             this.chargeVehicle(24);
-            
+
         }
         else if (category === "three"){
             this.chargeVehicle(73);
@@ -242,7 +291,7 @@ class GrasmerePlazaKiosk implements PlazaKiosk {
             this.chargeVehicle(118);
         }
     }
-    
+
     get dailyTotal(): number{
         return this.total;
     };
@@ -279,7 +328,7 @@ Each object knows internally what is the correct price to charge. The price info
 
 ### Abstract classes
 
-There is alot of repetition in these two classes it is only the `charge` method that is different for each class.
+There is a lot of repetition in these two classes it is only the `charge` method that is different for each class.
 
 I can create a common class that implement the shared methods of the Kiosks and then let each kiosk implement it's own specific logic. This is what Abstract Classes are for.
 
@@ -297,7 +346,7 @@ abstract class PlazaKioskBase implements PlazaKiosk{
         this._dailyTotal += price;
         this._dailyVehicleCount++;
     }
-    
+
     get dailyTotal(): number{
         return this._dailyTotal;
     };
@@ -330,7 +379,7 @@ The `GrasmerePlazaKiosk` class is now much smaller as it is inheriting behaviour
 
 ```typescript
 class GrasmerePlazaKiosk extends PlazaKioskBase {
-    
+
     charge(category: string): void {
         if (category === "one"){
             this.chargeVehicle(9);
@@ -358,7 +407,7 @@ class HuguenotePlazaKiosk extends PlazaKioskBase {
         }
         else if (category === "two"){
             this.chargeVehicle(47);
-            
+
         }
         else if (category === "three"){
             this.chargeVehicle(73);
@@ -372,7 +421,7 @@ class HuguenotePlazaKiosk extends PlazaKioskBase {
 
 Everything is still working as before:
 
-> Onwaba asks where shpuld this code be?
+> Onwaba asks where should this code be?
 
 ```typescript
 let huguenotePlaza = new HuguenotePlazaKiosk();
@@ -414,24 +463,3 @@ class KioskConsole{
 The `KioskConsole` class will link the `PlazaKiosk` class to the DOM. It will send values into the kiosk object and get values back from it.
 
 ### Polymorphism
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
