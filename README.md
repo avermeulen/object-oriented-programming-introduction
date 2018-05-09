@@ -157,7 +157,7 @@ class Car {
 }
 
 ```
-**NB** Run tsc on a seperate terminal windo so that it can automatically track your kchanges as you make changes on your .ts file, This makes life easier than having to run tsc after every change.
+>**NB** Run tsc on a seperate terminal windo so that it can automatically track your kchanges as you make changes on your .ts file, This makes life easier than having to run tsc after every change.
 
 Run `tsc` in the `cars` folder. You should now have a `cars.js` file in the `dist` folder.
 
