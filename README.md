@@ -88,18 +88,18 @@ try{
 
   carOne.accelerateBy(20);
   carTwo.accelerateBy(30);
-  console.log(carOne.currentSpeed);
-  console.log(carTwo.currentSpeed);
+  console.log("Car number 1 current speed after the first acceleration : " + carOne.currentSpeed);
+  console.log("Car number 2 current speed after the first acceleration : " + carTwo.currentSpeed);
 
   carOne.accelerateBy(20);
   // carOne is now faster  
-  console.log(carOne.currentSpeed);
+  console.log("Car number 1 current speed after the second acceleration : " + carOne.currentSpeed);
   //carTwo is still going at the same speed
-  console.log(carTwo.currentSpeed);
+  console.log("Car number 2 current speed after the first acceleration : " + carTwo.currentSpeed);
 
   carTwo.stop();
   //carTwo speed is now 0
-  console.log(carTwo.currentSpeed);
+  console.log("Car number 2 current speed after stopping : " + carTwo.currentSpeed);
 
   // this will throw an error as carThree was never started
   carThree.accelerateBy(20);
@@ -157,6 +157,7 @@ class Car {
 }
 
 ```
+**NB** Run tsc on a seperate terminal windo so that it can automatically track your kchanges as you make changes on your .ts file, This makes life easier than having to run tsc after every change.
 
 Run `tsc` in the `cars` folder. You should now have a `cars.js` file in the `dist` folder.
 
@@ -165,6 +166,12 @@ Run the `cars.js` like this `node cars.js` - you should not get any errors and i
 > Onwaba please add what should be printed to the screen
 
 ```
+Car number 1 current speed after the first acceleration : 20
+Car number 2 current speed after the first acceleration : 30
+Car number 1 current speed after the second acceleration : 40
+Car number 2 current speed after first acceleration : 30
+Car number 2 current speed after stopping : 0
+
 ```
 
 ## Using TypeScript
